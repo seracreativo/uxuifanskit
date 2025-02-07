@@ -1,3 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+#id {
+	background: repeating-linear-gradient(
+		45deg,
+		var(--border),
+		var(--border) 1px,
+		var(--background) 1px,
+		var(--background) 8px
+	);
+}
