@@ -1,0 +1,46 @@
+{
+	"name": "uxuifanskit",
+	"version": "1.1.0",
+	"description": "Una librería de componentes UI para React creada por UXUI Fans.",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build:css": "postcss src/styles.css -o dist/styles.css",
+		"build": "npm run build:css && babel src --extensions '.js,.jsx' --out-dir dist --copy-files"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/seracreativo/uxuifanskit.git"
+	},
+	"author": "Frank Sera",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/seracreativo/uxuifanskit/issues"
+	},
+	"homepage": "https://github.com/seracreativo/uxuifanskit#readme",
+	"peerDependencies": {
+		"react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+		"react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.26.4",
+		"@babel/core": "^7.26.7",
+		"@babel/preset-env": "^7.26.7",
+		"@babel/preset-react": "^7.26.3"
+	},
+	"keywords": [
+		"react",
+		"component-library",
+		"ui-kit",
+		"uxui"
+	],
+	"dependencies": {
+		"autoprefixer": "^10.4.20",
+		"postcss": "^8.5.1",
+		"postcss-cli": "^11.0.0",
+		"tailwindcss": "^4.0.4"
+	}
+}
