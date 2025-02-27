@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Elimina las definiciones de variables CSS de aquí 
+   o haz que solo se apliquen si no están ya definidas */
+:root {
+	--background: var(--background, #e9ecef);
+	--surface: var(--surface, #f8f9fa);
+	--input: var(--input, #dee2e6);
+	--border: var(--border, #bcc4cd);
+	--placeholder: var(--placeholder, #adb5bd);
+	--body: var(--body, #495057);
+	--title: var(--title, #212529);
+	--foreground: var(--foreground, #212529);
+	--accent: var(--accent, #000);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: var(--background, #212529);
+		--surface: var(--surface, #343a40);
+		--input: var(--input, #495057);
+		--border: var(--border, #495057);
+		--placeholder: var(--placeholder, #495057);
+		--body: var(--body, #adb5bd);
+		--title: var(--title, #e9ecef);
+		--foreground: var(--foreground, #e9ecef);
+		--accent: var(--accent, #212529);
+	}
+}
