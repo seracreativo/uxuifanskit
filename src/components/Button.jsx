@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Button = ({ children, onClick }) => {
+const Button = ({ children, func, className = '', ...props }) => {
 	return (
-		<button id='button' onClick={onClick}>
+		<button
+			onClick={func}
+			className={`bg-accent text-background px-4 h-12 ${className}`}
+			{...props}
+		>
 			{children}
 		</button>
 	);
