@@ -1,65 +1,118 @@
 # UXUI Fans Kit
 
-Una librería de componentes UI para React creada por UXUI Fans.
+Una librería de componentes UI para React Native creada por UXUI Fans.
 
 ## Instalación
 
 ```bash
 npm install uxuifanskit
-# o
-yarn add uxuifanskit
 ```
 
-## Uso básico
+### Dependencias requeridas
 
-1. Importa el CSS global en tu archivo principal (por ejemplo, en `App.js` o `index.js`):
+Asegúrate de tener estas dependencias en tu proyecto de React Native:
 
-```jsx
-import 'uxuifanskit/dist/globals.css';
+```bash
+npm install react-native-safe-area-context react-icons nativewind
 ```
 
-2. Importa y usa los componentes:
+## Configuración
+
+### 1. Configura NativeWind en tu proyecto
+
+En tu `tailwind.config.js`:
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: [
+		'./App.{js,jsx,ts,tsx}',
+		'./app/**/*.{js,jsx,ts,tsx}',
+		'./components/**/*.{js,jsx,ts,tsx}',
+	],
+	theme: {
+		extend: {},
+	},
+	plugins: [],
+};
+```
+
+### 2. Configura Babel
+
+En tu `babel.config.js`:
+
+```javascript
+module.exports = {
+	presets: ['module:metro-react-native-babel-preset'],
+	plugins: ['nativewind/babel'],
+};
+```
+
+### 3. Configura Metro
+
+En tu `metro.config.js`:
+
+```javascript
+const { getDefaultConfig } = require('expo/metro-config');
+const { withNativeWind } = require('nativewind/metro');
+
+const config = getDefaultConfig(__dirname);
+
+module.exports = withNativeWind(config, { input: './global.css' });
+```
+
+## Uso
 
 ```jsx
-import { Button } from 'uxuifanskit';
+import React from 'react';
+import { View } from 'react-native';
+import { Button, Form, Section, Spacer } from 'uxuifanskit';
 
-function App() {
+export default function App() {
 	return (
-		<div className='app'>
-			<Button>Haz clic aquí</Button>
-		</div>
+		<Form>
+			<Section title='Mi App'>
+				<Button onPress={() => console.log('Presionado!')}>Mi Botón</Button>
+				<Spacer height={20} />
+			</Section>
+		</Form>
 	);
 }
 ```
 
-## Personalización de colores
+## Componentes Disponibles
 
-Esta librería utiliza variables CSS para los colores, lo que te permite personalizarlos en tu proyecto.
+### Básicos
 
-Puedes sobrescribir estas variables en tu archivo CSS principal:
+- `Button` - Botón con estilos personalizables
+- `Spacer` - Espaciador con altura y ancho configurables
 
-```css
-:root {
-	--background: #e9ecef; /* Cambia esto por tu color deseado */
-	--surface: #f8f9fa;
-	--input: #dee2e6;
-	--border: #bcc4cd;
-	--placeholder: #adb5bd;
-	--body: #495057;
-	--title: #212529;
-	--foreground: #212529;
-	--accent: #000;
-}
+### UI
 
-/* También puedes personalizar el tema oscuro */
+- `Form` - Contenedor principal con scroll y refresh
+- `Section` - Sección con título y contenido
+- `Label` - Etiqueta de texto
+- `InputLabel` - Etiqueta para inputs
+- `Note` - Nota o descripción
+- `Footer` - Pie de página
+
+### Secciones
+
+- `Featured` - Sección destacada
+- `FooterSection` - Sección de pie de página
+  --accent: #000;
+  }
+
+/_ También puedes personalizar el tema oscuro _/
 @media (prefers-color-scheme: dark) {
-	:root {
-		--background: #212529;
-		--surface: #343a40;
-		/* ... otras variables ... */
-	}
+:root {
+--background: #212529;
+--surface: #343a40;
+/_ ... otras variables ... _/
 }
-```
+}
+
+````
 
 ## Configuración de Tailwind
 
@@ -85,4 +138,4 @@ module.exports = {
 		},
 	},
 };
-```
+````

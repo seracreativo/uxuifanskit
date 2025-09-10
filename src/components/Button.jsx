@@ -1,14 +1,27 @@
 import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 
-const Button = ({ children, func, className = '', ...props }) => {
+const Button = ({
+	children,
+	onPress,
+	func, // Para compatibilidad con versiones anteriores
+	className = '',
+	disabled = false,
+	...props
+}) => {
+	const handlePress = onPress || func;
+
 	return (
-		<button
-			onClick={func}
-			className={`bg-accent text-background px-4 h-12 ${className}`}
+		<TouchableOpacity
+			onPress={handlePress}
+			disabled={disabled}
+			className={`bg-accent px-4 py-3 rounded-lg items-center justify-center ${
+				disabled ? 'opacity-50' : ''
+			} ${className}`}
 			{...props}
 		>
-			{children}
-		</button>
+			<Text className='text-background font-medium text-base'>{children}</Text>
+		</TouchableOpacity>
 	);
 };
 
