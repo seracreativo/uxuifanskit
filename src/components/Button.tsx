@@ -8,6 +8,12 @@ const Button = ({
 	className = '',
 	disabled = false,
 	...props
+}: {
+	children: React.ReactNode;
+	onPress?: () => void;
+	func?: () => void;
+	className?: string;
+	disabled?: boolean;
 }) => {
 	const handlePress = onPress || func;
 
@@ -20,7 +26,7 @@ const Button = ({
 			} ${className}`}
 			{...props}
 		>
-			<Text className='text-background font-medium text-base'>{children}</Text>
+			{children}
 		</TouchableOpacity>
 	);
 };
